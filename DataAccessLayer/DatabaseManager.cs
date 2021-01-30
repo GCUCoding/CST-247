@@ -6,7 +6,7 @@ using System.Data;
 
 namespace DataAccessLayer
 {
-    class DatabaseManager
+    public class DatabaseManager
     {
         public string DBUsersConn { get; set; }
         public DatabaseManager()
