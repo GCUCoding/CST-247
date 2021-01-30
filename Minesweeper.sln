@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Milestone Project", "Milestone Project\Milestone Project.csproj", "{14078F7F-5B4D-45A9-A301-031A652678BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Milestone Project", "Milestone Project\Milestone Project.csproj", "{14078F7F-5B4D-45A9-A301-031A652678BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{9D3860FE-6EE9-44BE-89C5-739356DF0282}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{14078F7F-5B4D-45A9-A301-031A652678BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14078F7F-5B4D-45A9-A301-031A652678BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14078F7F-5B4D-45A9-A301-031A652678BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D3860FE-6EE9-44BE-89C5-739356DF0282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D3860FE-6EE9-44BE-89C5-739356DF0282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D3860FE-6EE9-44BE-89C5-739356DF0282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D3860FE-6EE9-44BE-89C5-739356DF0282}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
