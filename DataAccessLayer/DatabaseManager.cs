@@ -56,5 +56,31 @@ namespace DataAccessLayer
             }
             return users;
         }
+
+        public bool AddUser(User user)
+        {
+            using (SqlConnection conn = new SqlConnection(DBUsersConn))
+            {
+                //Set the SQL command to the stored 
+                //if you don't want to use stored procedures, this is a second example
+                // string insertCmd = @"INSERT INTO Employee (Name, Gender, Company, Department)
+                //                      VALUES(@Name, @Gender, @Company, @Department";
+                //SqlCommand cmd = new SqlCommand(insertCmd, conn)
+                using (SqlCommand cmd = new SqlCommand("Users.AddUser", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Name", user.Name);
+                    cmd.Parameters.AddWithValue("@Username", user.Username);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
+
+                    conn.Open();
+                    //ExecuteNonQuery used for executing queries that do not return any data
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+            return true;
+        }
     }
 }
