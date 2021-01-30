@@ -8,11 +8,6 @@ namespace Milestone_Project.Controllers
 {
     public class MinesweeperController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Login()
         {
             return View();

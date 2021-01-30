@@ -1,4 +1,4 @@
-﻿
+﻿@Model 
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,11 +6,55 @@
 
 <h1>Register</h1>
 
+@using (Html.BeginForm("CreateUser", "User", "Post"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class=" = " col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                @*The input Tag Helper binds an HTML <input> element to a mdel expression in the
+                    razor view.  Is equivalent to model=>model.Name -- the name of the expression is used
+                    for the asp-for attribute.*@
+                <input asp-for="Name" class="form-control" />
+                @*The validation message tag helper is used to display a validation
+                    message for a specific property of your model class.  In this
+                    case "The Name field is required" will be shown if the field
+                    is submitted blank.*@
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company" class="control-label"></label>
+                <input asp-for="Company" class="form-control" />
+                <span asp-validation-for="Company" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Department" class="control-label"></label>
+                <input asp-for="Department" class="form-control" />
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+
+        </div>
+    </div>
+}
+
 <div>
-    <form>
-        Name: <input type="text" id="Name" /><br />
-        Username: <input type="text" id="Username" /><br />
-        Password: <input type="text" id="Password" /><br />
-        <button type="submit" id="Register">Register</button>
-    </form>
+    Name: <input type="text" id="Name" /><br />
+    Username: <input type="text" id="Username" /><br />
+    Password: <input type="text" id="Password" /><br />
+    <button type="submit" id="Register">Register</button>
 </div>
