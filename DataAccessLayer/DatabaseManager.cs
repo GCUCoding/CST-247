@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data.SqlClient;
+using System.Data;
+
+namespace DataAccessLayer
+{
+    class DatabaseManager
+    {
+        public string DBUsersConn { get; set; }
+        public DatabaseManager()
+        {
+            DBUsersConn = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Milestone;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        }
+
+        public IEnumerable<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+
+            using (SqlConnection conn = new SqlConnection(DBUsersConn))
+            {
+                //Set the SQL command to the stored procedures
+                using (SqlCommand cmd = new SqlCommand("Users.GetAllUsers", conn))
+                {
+                    //By setting the command type to StoredProcedure, the first parameter 
+                    //to the SQL command will be interpreted as the name of a stored procedure
+                    //(instead of interpreting it as a command string) which would typically be the sql query
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+
+                    //Provides a way or reading a forward-only stream of rows from a SQL server
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        User user = new User();
+                        try
+                        {
+                            user.ID = Convert.ToInt32(dataReader["ID"].ToString());
+                        }
+                        catch
+                        {
+                            user.ID = 0;
+                        }
+                        user.Name = dataReader["Name"].ToString();
+                        user.Username = dataReader["Username"].ToString();
+                        user.Password = dataReader["Password"].ToString();
+                        users.Add(user);
+                    }
+                    //end of the while loop
+
+                }
+                //good practice to close connnection 
+                conn.Close();
+            }
+            return users;
+        }
+    }
+}
