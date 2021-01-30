@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Milestone Project", "Milestone Project\Milestone Project.csproj", "{14078F7F-5B4D-45A9-A301-031A652678BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{03F13A23-4F1D-410F-BA1D-4562B0E73E39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{03F13A23-4F1D-410F-BA1D-4562B0E73E39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLAyer\BusinessLayer.csproj", "{8F22E176-B21D-478F-B52F-2C45C4C28884}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{03F13A23-4F1D-410F-BA1D-4562B0E73E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03F13A23-4F1D-410F-BA1D-4562B0E73E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03F13A23-4F1D-410F-BA1D-4562B0E73E39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F22E176-B21D-478F-B52F-2C45C4C28884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F22E176-B21D-478F-B52F-2C45C4C28884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F22E176-B21D-478F-B52F-2C45C4C28884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F22E176-B21D-478F-B52F-2C45C4C28884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
