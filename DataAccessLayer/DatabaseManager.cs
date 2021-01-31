@@ -11,7 +11,7 @@ namespace DataAccessLayer
         public string DBUsersConn { get; set; }
         public DatabaseManager()
         {
-            DBUsersConn = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Milestone;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            this.DBUsersConn = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Milestone;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }
 
         public IEnumerable<User> GetUsers()
@@ -21,7 +21,7 @@ namespace DataAccessLayer
             using (SqlConnection conn = new SqlConnection(DBUsersConn))
             {
                 //Set the SQL command to the stored procedures
-                using (SqlCommand cmd = new SqlCommand("Users.GetAllUsers", conn))
+                using (SqlCommand cmd = new SqlCommand("usp_GetAllUsers", conn))
                 {
                     //By setting the command type to StoredProcedure, the first parameter 
                     //to the SQL command will be interpreted as the name of a stored procedure
@@ -66,7 +66,7 @@ namespace DataAccessLayer
                 // string insertCmd = @"INSERT INTO Employee (Name, Gender, Company, Department)
                 //                      VALUES(@Name, @Gender, @Company, @Department";
                 //SqlCommand cmd = new SqlCommand(insertCmd, conn)
-                using (SqlCommand cmd = new SqlCommand("Users.AddUser", conn))
+                using (SqlCommand cmd = new SqlCommand("usp_AddUser", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
