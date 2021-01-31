@@ -28,10 +28,11 @@ namespace Milestone_Project.Controllers
 
         public IActionResult Register([Bind] User user)
         {
-            if(ModelState.IsValid)
+            MinesweeperController m = new MinesweeperController();
+            if (ModelState.IsValid)
             {
                 userDAL.AddUser(user);
-                return RedirectToAction("Index");
+                return View("../Home/Index");
             }
             return View(user);
         }
