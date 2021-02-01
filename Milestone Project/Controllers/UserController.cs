@@ -13,6 +13,19 @@ namespace Milestone_Project.Controllers
     {
         UserData userDAL = new UserData();
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index([Bind] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                userDAL.AddUser(user);
+                List<User> users = new List<User>();
+                users = userDAL.GetUsers().ToList();
+                return View(users);                
+            }
+            return View(user);
+        }
         public IActionResult Index()
         {
             List<User> users = new List<User>();
@@ -26,9 +39,10 @@ namespace Milestone_Project.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Register([Bind] User user)
         {
-            MinesweeperController m = new MinesweeperController();
             if (ModelState.IsValid)
             {
                 userDAL.AddUser(user);
