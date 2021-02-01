@@ -20,5 +20,15 @@ namespace Milestone_Project.Models.UserInfo
         {
             return dataAccess.AddUser(user);
         }
+
+        public bool ValidateUser(User user)
+        {
+            return dataAccess.ValidateUser(user);
+        }
+
+        public User GetUserByUsername(User user)
+        {
+            return dataAccess.GetUserByUsername(user);
+        }
     }
 }
