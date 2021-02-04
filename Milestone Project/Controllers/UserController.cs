@@ -19,6 +19,7 @@ namespace Milestone_Project.Controllers
             users = userDAL.GetUsers().ToList();
             return View(users);
         }
+
         public IActionResult Login([Bind]User user)
         {
             if(userDAL.ValidateUser(user))
@@ -28,6 +29,7 @@ namespace Milestone_Project.Controllers
             }
             return View("../Minesweeper/Login");
         }
+
         [HttpGet]
         public IActionResult Register()
         {
@@ -46,7 +48,7 @@ namespace Milestone_Project.Controllers
                 user = userDAL.GetUserByUsername(user);
                 return View("Login", user);
             }
-            users = userDAL.GetUsers().ToList();
+            //users = userDAL.GetUsers().ToList();
             return View("../Minesweeper/Register");
         }
     }
