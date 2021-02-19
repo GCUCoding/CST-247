@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Milestone_Project.Models;
+using Milestone_Project.Models.GameLogic;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,6 +12,7 @@ namespace Milestone_Project.Controllers
 {
     public class HomeController : Controller
     {
+        static Board board;
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -20,7 +22,10 @@ namespace Milestone_Project.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            board = new Board(10);
+            board.SetupLiveNeighbors(5);
+            board.calculateLiveNeighbors();
+            return View("Index", board);
         }
 
         public IActionResult Privacy()

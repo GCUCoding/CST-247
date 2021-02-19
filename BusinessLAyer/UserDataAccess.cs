@@ -18,5 +18,15 @@ namespace BusinessLayer
         {
             return dbAccess.AddUser(user);
         }
+
+        public bool ValidateUser(User user)
+        {
+            return dbAccess.ValidateUser(user);
+        }
+
+        public User GetUserByUsername(User user)
+        {
+            return dbAccess.GetUserByUsername(user);
+        }
     }
 }

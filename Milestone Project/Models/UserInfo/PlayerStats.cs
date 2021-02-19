@@ -1,5 +1,4 @@
-﻿using Minesweeper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Minesweeper 
+namespace Milestone_Project.Models.UserInfo
 {
     public class PlayerStats : IComparable<PlayerStats>
     {

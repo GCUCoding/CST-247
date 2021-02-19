@@ -1,0 +1,42 @@
+﻿@model DataAccessLayer.User
+@{
+    ViewData["Title"] = "Login Successful!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var user = ViewData.Model;
+}
+<h1>
+    Welcome @Html.DisplayFor(modelItem => user.Name)!</h1>
+
+
+<div>
+    <h4>@Html.DisplayFor(modelItem => user.Name)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(modelItem => user.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(modelItem => user.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(modelItem => user.Username)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(modelItem => user.Password)
+        </dd>
+    </dl>
+</div>
