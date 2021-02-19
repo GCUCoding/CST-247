@@ -1,9 +1,52 @@
 ﻿@model Milestone_Project.Models.GameLogic.Board
 
+<style>
+    .game-button-image
+    {
+        width:100px;
+        height:100px;
+    }
+    .game-button 
+    {
+        width: 100px;
+        height: 100px;
+    }
+    .button-zone {
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>
+
 @for(int i = 0; i < Model.Size; i++)
 {
     @for(int j= 0; j < Model.Size; j++)
     {
+<div class="button-zone">
+    @if (Model.Grid[i, j].Visited)
+    {
 
+        if (Model.Grid[i, j].Live)
+        {
+            <button class="game-button-image" type="submit" value="@i,@j"
+                    name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
+
+                <img class="game-button" src="~/Pictures/purpleBomb.png" />
+            </button>
+        }
+        else
+        {
+            <button class="game-button-image" type="submit" value="@i,@j"
+                    name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
+
+                <img class="game-button" src="~/Pictures/" />
+            </button>
+        }
     }
+    else
+    {
+        <strong>@Model.Grid[i, j].LiveNeighbor </strong>
+    }
+</div>
+    }
+    <br />
 }
