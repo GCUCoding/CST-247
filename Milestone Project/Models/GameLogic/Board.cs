@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Minesweeper
+namespace Milestone_Project.Models.GameLogic
 { 
     public class Board
     {
