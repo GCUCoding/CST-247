@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Minesweeper\Pictures\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BusinessLAyer\BusinessLayer.csproj" />
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
   </ItemGroup>
