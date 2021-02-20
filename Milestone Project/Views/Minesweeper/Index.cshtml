@@ -80,14 +80,14 @@
                         <button class="game-button" type="submit" value="@i,@j"
                                 name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
 
-                            <img class="game-button" src="~/Pictures/purpleGrassBlock.jpg" />
-                        </button>
+                                <img class="game-bttn-image" src="~/Pictures/purpleGrassBlock.jpg" />
+                            </button>
+                        }
                     }
-                }
-                else
-                {
-                    <button class="game-button-image" type="submit" value="@i@j"
-                            name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
+                    else
+                    {
+                        <button class="game-bttn" type="submit" value="@i@j"
+                                name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
 
                             <img class="game-bttn-image" src="~/Pictures/grassBlock.png" />
                         </button>
