@@ -8,6 +8,7 @@
   <ItemGroup>
     <None Include="wwwroot\Pictures\bombBG.jpg" />
     <None Include="wwwroot\Pictures\bombBG.png" />
+    <None Include="wwwroot\Pictures\grassBlock.png" />
     <None Include="wwwroot\Pictures\purpleBomb.png" />
     <None Include="wwwroot\Pictures\purpleGrassBlock.jpg" />
   </ItemGroup>

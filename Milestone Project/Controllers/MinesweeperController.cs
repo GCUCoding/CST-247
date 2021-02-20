@@ -17,6 +17,15 @@ namespace Milestone_Project.Controllers
             board.calculateLiveNeighbors();
             return View("Index", board);
         }
+
+        public IActionResult HandleButtonClick(string coords)
+        {
+            int i = int.Parse(coords.Substring(0, 1));
+            int j = int.Parse(coords.Substring(1, 1));
+            board.FloodFill(i, j);
+            return View("Index", board);
+        }
+
         public IActionResult Login()
         {
             return View();
