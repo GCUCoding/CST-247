@@ -34,7 +34,7 @@
 
                     if (Model.Grid[i, j].Live)
                     {
-                        <button class="game-button-image" type="submit" value="@i@j"
+                        <button class="game-button" type="submit" value="@i,@j"
                                 name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
 
                             <img class="game-button" src="~/Pictures/purpleBomb.png" />
@@ -42,7 +42,7 @@
                     }
                     else
                     {
-                        <button class="game-button-image" type="submit" value="@i@j"
+                        <button class="game-button" type="submit" value="@i,@j"
                                 name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
 
                             <img class="game-button" src="~/Pictures/purpleGrassBlock.jpg" />
@@ -51,7 +51,7 @@
                 }
                 else
                 {
-                    <button class="game-button-image" type="submit" value="@i@j"
+                    <button class="game-button" type="submit" value="@i,@j"
                             name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
 
                         <img class="game-button" src="~/Pictures/grassBlock.png" />
