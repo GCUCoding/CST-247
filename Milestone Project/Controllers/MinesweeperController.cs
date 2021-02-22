@@ -12,7 +12,7 @@ namespace Milestone_Project.Controllers
         static Board board;
         public IActionResult Index()
         {
-            board = new Board(10);
+            board = new Board(11);
             board.SetupLiveNeighbors(5);
             board.calculateLiveNeighbors();
             return View("Index", board);
