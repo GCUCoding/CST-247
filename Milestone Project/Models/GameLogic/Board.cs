@@ -55,7 +55,7 @@ namespace Milestone_Project.Models.GameLogic
                      * the only cells that become bombs are cells with the random ints 0-20 and 21-100 wiil
                      * all be empty or "safe" squares
                      */
-                    if (r <= difficulty)
+                    if (r <= difficulty && !Grid[i,j].Visited)
                     {
                         Grid[i, j].Live = true;
                     }
