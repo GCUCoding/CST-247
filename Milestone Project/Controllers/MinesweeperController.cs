@@ -10,9 +10,11 @@ namespace Milestone_Project.Controllers
     public class MinesweeperController : Controller
     {
         static Board board;
+        static bool firstMoveTaken = false;
         public IActionResult Index()
         {
             board = new Board(10);
+            firstMoveTaken = false;
             return View("Index", board);
         }
         
@@ -22,8 +24,12 @@ namespace Milestone_Project.Controllers
             int i = int.Parse(coordsArr[0]);
             int j = int.Parse(coordsArr[1]);
             board.Grid[i, j].Visited = true;
-            board.SetupLiveNeighbors(5);
-            board.calculateLiveNeighbors();
+            if (!firstMoveTaken)
+            {
+                board.SetupLiveNeighbors(5);
+                board.calculateLiveNeighbors();
+                firstMoveTaken = true;
+            }
             board.FloodFill(i, j);
             return View("Index", board);
         }
