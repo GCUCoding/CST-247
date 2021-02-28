@@ -12,18 +12,18 @@ namespace Milestone_Project.Controllers
         static Board board;
         public IActionResult Index()
         {
-            board = new Board(11);
-            board.SetupLiveNeighbors(5);
-            board.calculateLiveNeighbors();
+            board = new Board(10);
             return View("Index", board);
         }
-
+        
         public IActionResult HandleButtonClick(string coords)
         {
             string[] coordsArr = coords.Split(',');
             int i = int.Parse(coordsArr[0]);
             int j = int.Parse(coordsArr[1]);
             board.Grid[i, j].Visited = true;
+            board.SetupLiveNeighbors(5);
+            board.calculateLiveNeighbors();
             board.FloodFill(i, j);
             return View("Index", board);
         }
