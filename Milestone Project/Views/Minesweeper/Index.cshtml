@@ -1,15 +1,18 @@
-﻿@model Milestone_Project.Models.GameLogic.Board
+@model Milestone_Project.Models.GameLogic.Board
 
 <style>
-    .game-bttn {
-        align-content: center;
-        width: 50px;
+    .game-button-image {
+        width: 100px;
+        height: 100px;
+        display: block;
+        float: left;
     }
 
-    .game-bttn-image {
-        padding: 2px;
-        align-content: center;
-        width: 50px;
+    .game-button {
+        width: 90px;
+        height: 90px;
+        display: block;
+        float: left;
     }
 
     .bttn-zone {
@@ -56,20 +59,20 @@
         height: 0;
     }*@
 </style>
-<form>
-    @for (int i = 0; i < Model.Size; i++)
+
+@for (int i = 0; i < Model.Size; i++)
+{
+
+    @for (int j = 0; j < Model.Size; j++)
     {
-        @for (int j = 0; j < Model.Size; j++)
-        {
-            @for (int k = 0; k < 10; k++)
-            {
-                <div class="bttn-zone">
-                    @if (Model.Grid[i, j].Visited)
-                    {
+        <form>
+            <div class="button-zone">
+                @if (Model.Grid[i, j].Visited)
+                {
 
                     if (Model.Grid[i, j].Live)
                     {
-                        <button class="game-button" type="submit" value="@i,@j"
+                        <button class="game-button-image" type="submit" value="@i,@j"
                                 name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
 
                             <img class="game-button" src="~/Pictures/purpleBomb.png" />
@@ -77,25 +80,24 @@
                     }
                     else
                     {
-                        <button class="game-button" type="submit" value="@i,@j"
+                        <button class="game-button-image" type="submit" value="@i,@j"
                                 name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
 
-                                <img class="game-bttn-image" src="~/Pictures/purpleGrassBlock.jpg" />
-                            </button>
-                        }
-                    }
-                    else
-                    {
-                        <button class="game-bttn" type="submit" value="@i@j"
-                                name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
-
-                            <img class="game-bttn-image" src="~/Pictures/grassBlock.png" />
+                            <img class="game-button" src="~/Pictures/purpleGrassBlock.jpg" />
                         </button>
                     }
-                </div>
-            }
-            <br class="line-break" />
-        }
-        <br />
+                }
+                else
+                {
+                    <button class="game-button-image" type="submit" value="@i,@j"
+                            name="coords" asp-controller="Minesweeper" asp-action="HandleButtonClick">
+
+                        <img class="game-button" src="~/Pictures/grassBlock.png" />
+                    </button>
+                }
+            </div>
+        </form>
     }
-</form>
+    <p>
+    </p>
+}
