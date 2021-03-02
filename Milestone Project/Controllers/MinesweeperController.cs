@@ -23,7 +23,6 @@ namespace Milestone_Project.Controllers
         public IActionResult HandleButtonClick(string coords)
         {
             string[] coordsArr = coords.Split(',');
-            string checkedString = Request.Form["isChecked"];
             int i = int.Parse(coordsArr[0]);
             int j = int.Parse(coordsArr[1]);
             board.Grid[i, j].Visited = true;
