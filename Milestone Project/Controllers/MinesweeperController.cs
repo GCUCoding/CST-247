@@ -20,12 +20,14 @@ namespace Milestone_Project.Controllers
             return View("Index", board);
         }
         
-        public IActionResult HandleButtonClick(string coords)
+        public IActionResult HandleButtonClick(string place)
         {
-            string[] coordsArr = coords.Split(',');
-            int i = int.Parse(coordsArr[0]);
-            int j = int.Parse(coordsArr[1]);
+            ViewBag.place = place;
+            int location = Convert.ToInt32(place);
+            int i = location/board.Size;
+            int j = location%board.Size;
             board.Grid[i, j].Visited = true;
+            board.Grid[i, j].Flagged = false;
             if (!firstMoveTaken)
             {
                 board.SetupLiveNeighbors(5);
@@ -35,16 +37,32 @@ namespace Milestone_Project.Controllers
             board.FloodFill(i, j);
             if (boardService.CheckWin(board))
             {
-                return View("GameWin");
+                return View("GameWin", board);
             }
             else if (boardService.CheckLoss(board))
             {
-                return View("GameLoss");
+                return View("GameLoss", board);
             }
             else
             {
                 return View("Index", board);
             }
+        }
+
+        public IActionResult FlagButton(string id)
+        {
+            int location = Convert.ToInt32(id);
+            int i = location / board.Size;
+            int j = location % board.Size;
+            if(board.Grid[i, j].Flagged)
+            {
+                board.Grid[i, j].Flagged = false;
+            }
+            else
+            {
+                board.Grid[i, j].Flagged = true;
+            }
+            return PartialView(board.Grid[i,j]);
         }
 
         public IActionResult Login()

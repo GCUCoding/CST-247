@@ -29,6 +29,9 @@ namespace Milestone_Project.Models.GameLogic
                 for (int j = 0; j < size; j++)
                 {
                     Grid[i, j] = new Cell();
+                    Grid[i, j].Row = i;
+                    Grid[i, j].Column = j;
+                    Grid[i, j].BoardSize = this.Size;
                 }
             }
         }

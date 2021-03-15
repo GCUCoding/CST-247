@@ -1,0 +1,52 @@
+﻿@model Milestone_Project.Models.GameLogic.Cell
+    <style>
+        .game-button-image {
+            width: 50px;
+            height: 50px;
+            display: block;
+            float: left;
+            background-position: left top;
+            background-size: contain;
+            border: 1px solid black;
+        }
+
+        .bttn-zone {
+            align-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            width: auto;
+            height: auto;
+            align-self: center;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .line-break {
+            flex-basis: 100%;
+            height: 0;
+        }
+
+        .bttn-label {
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            margin: auto;
+            padding: 17px;
+            color: white;
+        }
+    </style>
+@{ int location = (Model.Row*Model.BoardSize) + Model.Column;}
+@if (Model.Flagged)
+{
+<button class="game-button-image" type="submit" id="@location" value="@location"
+        name="coords" style="background-image: url('/Pictures/glowstoneBlock.png');"
+        asp-controller="Minesweeper" asp-action="HandleButtonClick">
+</button>
+}
+else
+{
+<button class="game-button-image" type="submit" id="@location" value="@location"
+        name="coords" style="background-image: url('/Pictures/grassBlock.png');"
+        asp-controller="Minesweeper" asp-action="HandleButtonClick">
+</button>
+}

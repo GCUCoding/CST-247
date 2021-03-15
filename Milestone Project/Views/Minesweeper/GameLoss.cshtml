@@ -1,7 +1,82 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Milestone_Project.Models.GameLogic.Board
+
+<style>
+    .game-button-image {
+        width: 50px;
+        height: 50px;
+        display: block;
+        float: left;
+        background-position: left top;
+        background-size: contain;
+        border: 1px solid black;
+    }
+
+    .bttn-zone {
+        align-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        width: auto;
+        height: auto;
+        align-self: center;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .line-break {
+        flex-basis: 100%;
+        height: 0;
+    }
+
+    .bttn-label {
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        margin: auto;
+        padding: 17px;
+        color: white;
+    }
+</style>
+
+<div class="bttn-zone">
+    @for (int i = 0; i < Model.Size; i++)
+    {
+
+        @for (int j = 0; j < Model.Size; j++)
+        {
+            <form>
+                @{int location = (i * Model.Size) + j; }
+                @if (Model.Grid[i, j].Live)
+                {
+                <button class="game-button-image" type="submit" id="@location" value="@location"
+                        name="place" style="background-image: url('/Pictures/TNT.png');"
+                        asp-controller="Minesweeper" asp-action="HandleButtonClick" disabled>
+                </button>
+                }
+                else if (Model.Grid[i, j].Visited)
+                { 
+                        <button class="game-button-image" type="submit" id="@location" value="@location"
+                                    name="place" style="background-image: url('/Pictures/Dirt.png');"
+                                    asp-controller="Minesweeper" asp-action="HandleButtonClick" disabled>
+                            @*if(Model.Grid[i,j].LiveNeighbor != 0)
+                                {
+                                    <b class="bttn-label">@Model.Grid[i, j].LiveNeighbor</b>
+                                }*@
+                            <b class="bttn-label">@Model.Grid[i, j].LiveNeighbor</b>
+                        </button>
+                }
+
+                else
+                {
+                    <button class="game-button-image" type="submit" id="@location" value="@location"
+                            name="place" style="background-image: url('/Pictures/grassBlock.png');"
+                            asp-controller="Minesweeper" asp-action="HandleButtonClick" disabled>
+                    </button>
+                }
+
+            </form>
+        }
+        <div class="line-break"></div>
+    }
+</div>
 <h1>You lost :( </h1>
 <h5><a asp-controller="Minesweeper" asp-action="Index">Try Again?</a></h5>

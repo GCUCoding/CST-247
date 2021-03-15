@@ -13,6 +13,9 @@ namespace Milestone_Project.Models.GameLogic
         public bool Live { get; set; }
         public int LiveNeighbor { get; set; }
 
+        public int BoardSize { get; set; }
+
+        public bool Flagged { get; set; }
         /// <summary>
         /// Cell Constructor
         /// </summary>
